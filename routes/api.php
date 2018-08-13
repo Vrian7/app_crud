@@ -16,3 +16,6 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::resource('record', 'RecordController')->except(['create', 'edit', 'destroy']);
+Route::get('getIndexData','RecordController@getIndexData');

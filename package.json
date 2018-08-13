@@ -18,5 +18,12 @@
         "laravel-mix": "^2.0",
         "lodash": "^4.17.4",
         "vue": "^2.5.7"
+    },
+    "dependencies": {
+        "bootstrap-vue": "^2.0.0-rc.11",
+        "mockjs": "^1.0.1-beta3",
+        "moment": "^2.22.2",
+        "selector": "^1.0.0",
+        "vue2-datatable-component": "^2.3.1"
     }
 }
