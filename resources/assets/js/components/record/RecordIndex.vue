@@ -1,18 +1,22 @@
 <template>
-  <div>        
-    <datatable v-bind="$data">      
+  <div>       
+    <!-- <button @click="showModal" >123123</button> -->
+    <datatable v-bind="$data" @editItem="editItem">
       <!-- <button class="btn btn-default" @click="alertSelectedUids" :disabled="!selection.length">
         <i class="fa fa-commenting-o"></i>
         Alert selected uid(s)
       </button> -->
-    </datatable>
+    </datatable>      
   </div>
 </template>
+
 <script>
 
 import Vue from 'vue'
 import axios from 'axios'
 import Datatable from 'vue2-datatable-component'
+
+
 
 Vue.use(Datatable)
 import mockData from '../_mockData'
@@ -86,11 +90,15 @@ export default {
       alert(this.selection.map(({ id }) => id))
     },
     editItem (item) {
+      console.log("here");
       this.editedIndex = this.desserts.indexOf(item)
       this.editedItem = Object.assign({}, item)
       console.log(item);
       //this.date = item.birth_date
       //this.dialog = true
+    },
+    showModal () {
+      this.$refs.myModalRef.show()
     },
   }
 }

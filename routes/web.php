@@ -15,4 +15,6 @@ Route::get('/', function () {
     return view('index');
 });
 
+Route::resource('record', 'RecordController')->except(['create', 'edit', 'destroy']);
+Route::resource('status', 'StatusController')->except(['create', 'edit', 'destroy']);
 Route::get('getIndexData','RecordController@getIndexData');

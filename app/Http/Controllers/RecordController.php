@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Record;
+use App\Http\Requests\RecordForm;
 use Illuminate\Http\Request;
 
 /** @resource Employee
@@ -18,30 +19,69 @@ class RecordController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return response()->json(Employee::with('city_identity_card')
-                ->with('insurance_company')
-                ->with('management_entity')
-                ->with('city_birth')
-                ->get());
+    {        
+        return response()->json(Record::get());
     }
+
+    /**
+     * Select information from Records.
+     *
+     * @param  \Illuminate\Http\Request  $request     
+     * @return \Illuminate\Http\Response
+    */
     public function getIndexData(Request $request)
     {    	
     	$offset = $request->offset ?? 0;
         $limit = $request->limit ?? 10;
         $sort = $request->sort ?? 'id';
         $order = $request->order ?? 'asc';  
-        $total = Record::count();
-		$records = Record::
-			skip($offset)
+        $name = $request->name ?? '';
+        $uuid = $request->uuid ?? 0;
+        $description = $request->description ?? '';
+        $code = $request->code ?? '';
+        if($uuid)
+            $operator = '=';
+        else
+            $operator = '!=';
+         
+         $total = Record::
+            where('name','like',$name.'%')        
+            ->where('code','like',$code.'%')        
+            ->where('description','like',$description.'%')        
+            ->where('uuid',$operator,$uuid)->count();
+
+        $records = Record::
+            where('name','like',$name.'%')        
+            ->where('code','like',$code.'%')        
+            ->where('description','like',$description.'%')        
+            ->where('uuid',$operator,$uuid)
+			->skip($offset)
             ->take($limit)
             ->orderBy($sort,$order)
             ->get();
+            
+      
+        
 
         return response()->json(
         	[
         	   'records' => $records->toArray(),
         	   'total'=>$total,
         	 ]);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+    */
+    public function update(RecordForm $request, $id)
+    {        
+        $record = Record::findOrFail($id);
+        $record->fill($request->all());
+        $record->save();
+        return $record;
     }
 }

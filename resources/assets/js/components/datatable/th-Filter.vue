@@ -3,7 +3,7 @@
     {{ title }}
     <a href="javascript:;" data-toggle="dropdown">
       <i class="fa fa-filter" :class="{ 'text-muted': !keyword }"></i>
-      search
+      Filter
     </a>
     <ul class="dropdown-menu" style="padding: 3px">
       <div class="input-group input-group-sm">

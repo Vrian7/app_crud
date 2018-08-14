@@ -8,6 +8,12 @@
 require('./bootstrap');
 
 import AppMain from './components/record/RecordIndex.vue'
+import bModal from 'bootstrap-vue/es/components/modal/modal'
+import bButton from 'bootstrap-vue/es/components/button/button'
+import bFormInput from 'bootstrap-vue/es/components/form-input/form-input'
+import bFormGroup from 'bootstrap-vue/es/components/form-group/form-group';
+import bFormSelect from 'bootstrap-vue/es/components/form-select/form-select';
+import bAlert from 'bootstrap-vue/es/components/alert/alert';
 window.Vue = require('vue');
 
 /**
@@ -17,6 +23,12 @@ window.Vue = require('vue');
  */
 
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
+Vue.component('b-modal', bModal);
+Vue.component('b-button', bButton);
+Vue.component('b-form-input', bFormInput);
+Vue.component('b-form-group', bFormGroup);
+Vue.component('b-form-select', bFormSelect);
+Vue.component('b-alert', bAlert);
 const app = new Vue({
     el: '#app',
     components: {
