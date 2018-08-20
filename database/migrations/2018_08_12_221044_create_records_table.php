@@ -15,7 +15,7 @@ class CreateRecordsTable extends Migration
     {
         Schema::create('records', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('uuid')->unique();
+            $table->string('uuid')->unique();
             $table->string('name')->nullable();
             $table->mediumText('description')->nullable();
             $table->string('code');
