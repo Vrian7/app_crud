@@ -10,7 +10,7 @@ class StatusController extends Controller
     /**
      * Display Statuses's data.
      *
-     * @return \Illuminate\Http\Response
+     * @return \App\Status
      */
     public function index()
     {        

@@ -39,19 +39,21 @@ class RecordController extends Controller
         $uuid = $request->uuid ?? 0;
         $description = $request->description ?? '';
         $code = $request->code ?? '';
-        if($uuid)
+        if($uuid) {
             $operator = '=';
-        else
+        } else {
             $operator = '!=';
+        }
          
-         $total = Record::
-            where('name','like',$name.'%')        
+        $total = Record::
+              where('name','like',$name.'%')        
             ->where('code','like',$code.'%')        
             ->where('description','like',$description.'%')        
-            ->where('uuid',$operator,$uuid)->count();
+            ->where('uuid',$operator,$uuid)
+            ->count();
 
         $records = Record::
-            where('name','like',$name.'%')        
+              where('name','like',$name.'%')        
             ->where('code','like',$code.'%')        
             ->where('description','like',$description.'%')        
             ->where('uuid',$operator,$uuid)
@@ -59,23 +61,20 @@ class RecordController extends Controller
             ->take($limit)
             ->orderBy($sort,$order)
             ->get();
-            
-      
-        
 
         return response()->json(
-        	[
-        	   'records' => $records->toArray(),
-        	   'total'=>$total,
-        	 ]);
+        [
+            'records' => $records->toArray(),
+            'total'=>$total,
+        ]);
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the Records in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \App\Record
     */
     public function update(RecordForm $request, $id)
     {        

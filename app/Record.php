@@ -18,7 +18,12 @@ class Record extends Model
         'code',
         'status_id'
     ];
-
+    
+    /**
+     * Get Record Status 
+     * @access public
+     * @return \App\Status
+     */
     public function status()
     {
         return $this->belongsTo(Status::class, 'status_id', 'id');
