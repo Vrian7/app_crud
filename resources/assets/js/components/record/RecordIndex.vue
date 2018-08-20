@@ -1,6 +1,5 @@
 <template>
-  <div>       
-    <!-- <button @click="showModal" >123123</button> -->
+  <div>           
     <datatable v-bind="$data" @editItem="editItem">
       <!-- <button class="btn btn-default" @click="alertSelectedUids" :disabled="!selection.length">
         <i class="fa fa-commenting-o"></i>
@@ -15,7 +14,6 @@
 import Vue from 'vue'
 import axios from 'axios'
 import Datatable from 'vue2-datatable-component'
-
 
 
 Vue.use(Datatable)
