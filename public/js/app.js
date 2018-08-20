@@ -73099,48 +73099,9 @@ var render = function() {
             "b-navbar-nav",
             { staticClass: "ml-auto" },
             [
-              _c(
-                "b-nav-form",
-                [
-                  _c("b-form-input", {
-                    staticClass: "mr-sm-2",
-                    attrs: { size: "sm", type: "text", placeholder: "Search" }
-                  }),
-                  _vm._v(" "),
-                  _c(
-                    "b-button",
-                    {
-                      staticClass: "my-2 my-sm-0",
-                      attrs: { size: "sm", type: "submit" }
-                    },
-                    [_vm._v("Search")]
-                  )
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "b-nav-item-dropdown",
-                { attrs: { text: "Recent Activity", right: "" } },
-                [
-                  _c("b-dropdown-item", { attrs: { href: "#" } }, [
-                    _vm._v("EN")
-                  ]),
-                  _vm._v(" "),
-                  _c("b-dropdown-item", { attrs: { href: "#" } }, [
-                    _vm._v("ES")
-                  ]),
-                  _vm._v(" "),
-                  _c("b-dropdown-item", { attrs: { href: "#" } }, [
-                    _vm._v("RU")
-                  ]),
-                  _vm._v(" "),
-                  _c("b-dropdown-item", { attrs: { href: "#" } }, [
-                    _vm._v("FA")
-                  ])
-                ],
-                1
-              ),
+              _c("b-nav-item-dropdown", {
+                attrs: { text: "Recent Activity", right: "" }
+              }),
               _vm._v(" "),
               _c(
                 "b-nav-item-dropdown",
@@ -73148,10 +73109,6 @@ var render = function() {
                 [
                   _c("template", { slot: "button-content" }, [
                     _c("em", [_vm._v("User")])
-                  ]),
-                  _vm._v(" "),
-                  _c("b-dropdown-item", { attrs: { href: "#" } }, [
-                    _vm._v("Profile")
                   ]),
                   _vm._v(" "),
                   _c("b-dropdown-item", { attrs: { href: "#" } }, [
