@@ -26,18 +26,15 @@ export default {
     jQuery(this.$el).on('shown.bs.dropdown', e => this.$refs.input.focus());
   },
   watch: {
-    keyword (kw) {
-      // reset immediately if empty
+    keyword (kw) {      
       if (kw === '') this.search()
     }
   },
   methods: {
     search () {
-      const { query } = this
-      // `$props.query` would be initialized to `{ limit: 10, offset: 0, sort: '', order: '' }` by default
-      // custom query conditions must be set to observable by using `Vue.set / $vm.$set`
+      const { query } = this      
       this.$set(query, this.field, this.keyword)
-      query.offset = 0 // reset pagination
+      query.offset = 0
     }
   }
 }
